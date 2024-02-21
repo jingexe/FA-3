@@ -1,0 +1,72 @@
+---
+title: "FA#3"
+output: html_document
+date: "2024-02-21"
+---
+FA#3
+
+1. Create a histogram on the diamonds dataset.
+```{r}
+library(ggplot2)
+
+data(diamonds)
+
+p <- ggplot(data = diamonds) + 
+  layer(
+    stat = "bin", 
+    data = diamonds, 
+    mapping = aes(x = carat), 
+    geom = "bar", 
+    position = "stack"
+  )
+
+print(p)
+
+```
+
+
+2. Modifying the Histogram to Use a Different "geom"
+```{r}
+p <- ggplot(data = diamonds) + 
+  layer(
+    stat = "bin", 
+    data = diamonds, 
+    mapping = aes(x = carat, y = ..count..), 
+    geom = "point", 
+    position = "identity"
+  )
+
+print(p)
+
+```
+
+
+3. Adding an Aesthetic Mapping to the Histogram
+```{r}
+p <- ggplot(data = diamonds) + 
+  layer(
+    stat = "bin", 
+    data = diamonds, 
+    mapping = aes(x = carat, fill = color), # Using color as an example
+    geom = "bar", 
+    position = "stack"
+  )
+
+print(p)
+
+```
+4. Changing the Position Adjustment
+```{r}
+p <- ggplot(data = diamonds) + 
+  layer(
+    stat = "bin", 
+    data = diamonds, 
+    mapping = aes(x = carat, fill = color),
+    geom = "bar", 
+    position = "dodge"
+  )
+
+print(p)
+
+```
+
